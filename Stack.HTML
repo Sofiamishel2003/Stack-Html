@@ -1,0 +1,123 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <title>Stack en Java</title>
+        <script>
+
+            function init()
+            {
+                st = new stack()
+                //stack.constructor()
+            }
+
+            function dopush()
+            {
+                st.push(e1.value)
+                //e=e1.value
+                //this.data[this.sp].value=e
+                //e1.value=""
+            }
+
+            function dopop()
+            {
+                st.pop()
+            }
+
+            function dotop()
+            {
+                e1.value = st.top()
+            }
+
+            function doempty()
+            {
+                e1.value = st.empty()
+            }
+            function domakenull()
+            {
+                st.makenull()
+            }
+
+            class stack
+            {
+                constructor()
+                {
+                    this.data = new Array(10)
+                    this.sp = 0
+                    for (var i=0; i<10; i++)
+                    {
+                        this.data[i]=document.createElement("input")
+                        this.data[i].type="button"
+                        this.data[i].style.position="absolute"
+                        document.body.appendChild(this.data[i])
+                        this.data[i].style.left="200px"
+                        this.data[i].style.aling="center"
+                        this.data[i].style.top=(350-i*18)+ "px"
+                        this.data[i].style.width="100px"
+                        
+                    }
+                }
+
+                push(e)
+                {
+                    if (this.sp<10)
+                    {
+                        console.log(e)
+                        this.data[this.sp].value=e
+                        //this.data[this.sp].value=Math.trunc(Math.random()*83+3)
+                        //console.log(self.data[this.sp])
+                        this.sp++
+                    }
+                    else
+                    {
+                        alert("Stack overerflow")
+                    }
+                }
+
+                pop()
+                {
+                    if (this.sp>0)
+                    {
+                        this.sp--
+                        this.data[this.sp].value=""
+                    }
+                    else
+                    {
+                        alert("Stack underflow")
+                    }
+                }
+
+                top()
+                {
+                    
+                    return((this.data[this.sp-1]).value)
+                }
+
+                empty()
+                {
+                    return this.sp==0
+                }
+                makenull()
+                {
+                    for(var i=0; i<10; i++)
+                    {
+                        
+                        this.data[i].value=""
+                    }
+                    this.sp=0
+                }
+            }
+
+        </script>
+    </head>
+    <body onload="init()" style="background-color:beige;"> 
+	<h1 style="text-aling: center;">stack <h1>
+	<hr>
+	Elemento:<input type="text" id="e1">
+	<input type="button" value="Push" onclick="dopush()">
+	<input type="button" value="Pop" onclick="dopop()">
+	<input type="button" value="Top" onclick="dotop()">
+	<input type="button" value="Empty" onclick="doempty()">
+    <input type="button" value="makenull" onclick="domakenull()">
+    </body>
+
+</html>
